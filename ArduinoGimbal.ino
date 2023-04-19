@@ -96,6 +96,10 @@ void setup() {
   if (devStatus == 0) {
     // turn on the DMP, now that it's ready
     // Serial.println(F("Enabling DMP..."));
+    
+    mpu.CalibrateAccel(6);
+    mpu.CalibrateGyro(6);
+    mpu.PrintActiveOffsets();
     mpu.setDMPEnabled(true);
 
     attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), dmpDataReady, RISING);
